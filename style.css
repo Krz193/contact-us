@@ -1,0 +1,41 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body, .container { min-height: 100vh; }
+
+.container, .container > section {
+    display: flex;
+    width: 100%;
+}
+section.left, section.right {
+    flex-direction: column;
+    padding: 15vh 0 0;
+}
+section.left {
+    justify-content: start;
+    align-items: end;
+    padding-right: 50px;
+}
+section.right {
+    align-items: center;
+}
+
+.form {
+    width: 70%;
+}
+.form, .input-group{
+    display: flex;
+    flex-direction: column;
+}
+.input-group, .form-submit {
+    padding: .5rem 1rem;
+}
+.form-submit input[type="submit"]{
+    padding: 1rem;
+    width: 100%;
+}
+.input-group > input, .input-group > textarea {
+    padding: .5em;
+    font-size: 11pt;
+}
+#body-email { 
+    resize: none;
+}

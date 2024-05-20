@@ -1,0 +1,14 @@
+{
+    "name": "nekolin/contact-us",
+    "description": "simple contact us page",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "nekoLin"
+        }
+    ],
+    "minimum-stability": "dev"
+}
