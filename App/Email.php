@@ -4,10 +4,11 @@
     use PHPMailer\PHPMailer\Exception;
 
     //Load Composer's autoloader
-    require 'vendor/autoload.php';
+    require '../vendor/autoload.php';
 
 class Email {
     private $mail;
+    public $errorInfo;
 
     public function __construct()
     {
@@ -31,7 +32,7 @@ class Email {
 
     public function sendEmail(array $data) {
         //Recipients
-        $this->mail->setFrom('userfromnowhere@domain.com', $data["email"], 0);
+        $this->mail->setFrom($data["email"], $data["username"], 0);
         $this->mail->addAddress('1st.nekolin@gmail.com');     //email tujuan
 
         //Content
@@ -47,8 +48,3 @@ class Email {
 }
 
 $Email = new Email();
-// try{
-//     $Email->sendEmail();
-// } catch (Exception $e) {
-//     echo "Message could not be sent. Mailer Error: {$Email->getMail()->ErrorInfo}";
-// } 
