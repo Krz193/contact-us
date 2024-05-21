@@ -12,13 +12,21 @@ class Email {
     public function __construct()
     {
 
+        // $this->mail = new PHPMailer();
+        // $this->mail->isSMTP();
+        // $this->mail->Host = 'smtp.gmail.com';
+        // $this->mail->SMTPAuth = true;
+        // $this->mail->Port = 587;
+        // $this->mail->Username = 'krzy1.yt@gmail.com';
+        // $this->mail->Password = 'nhil lcrb jzll exok';
+
         $this->mail = new PHPMailer();
         $this->mail->isSMTP();
-        $this->mail->Host = 'smtp.gmail.com';
+        $this->mail->Host = 'sandbox.smtp.mailtrap.io';
         $this->mail->SMTPAuth = true;
-        $this->mail->Port = 587;
-        $this->mail->Username = 'krzy1.yt@gmail.com';
-        $this->mail->Password = 'nhil lcrb jzll exok';
+        $this->mail->Port = 2525;
+        $this->mail->Username = 'c6248c6c834e32';
+        $this->mail->Password = '5eb041aebc49cf';
     }
 
     public function sendEmail(array $data) {
@@ -33,6 +41,8 @@ class Email {
 
         $this->mail->send();
         echo 'Message has been sent';
+
+        $this->mail->smtpClose();
     }
 }
 
