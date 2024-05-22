@@ -1,0 +1,11 @@
+@media only screen and (max-width: 720px) {
+    .container { flex-direction: column; }
+    .bg { display: none; }
+    section.left { padding: 25px 0 100px; }
+    section.left main { justify-content: center; width: 100%; padding: 0 10% 0;}
+    section.right { padding-bottom: 0; }
+    section.right, aside { width: 100%; }
+    aside p { padding: 0 0 1em !important; }
+    aside::before { transform: translate(50%, -50%); width: 50px;}
+    .form-submit { justify-content: center; padding: 25% 0 0;}
+}
