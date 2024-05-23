@@ -4,7 +4,7 @@
     --accent: rgb(219, 80, 74);
 
     --light-bg: rgb(245, 245, 245);
-    --success: rgb(202, 255, 191);
+    --success: rgb(50, 159, 91);
     --dark-bg: rgb(29, 29, 31);
 
     --title-font: 'montserrat-italic';
@@ -49,7 +49,6 @@ body {
 
 /* coloring */
 body {
-    /* background-image: linear-gradient(to top, var(--primary) 0%, var(--secondary) 100%); */
     background-color: var(--light-bg);
 }
 .bg, aside::before, aside::after { 
@@ -65,16 +64,24 @@ aside *, .form-submit input{
 
 /* container layout */
 .container,
-.container > section {
+.container .content-wrap {
     display: flex;
     width: 100%;
 }
+.content-wrap {
+    align-items: end;
+    justify-content: center;
+    align-self: flex-start;
+    padding: 15vh 0 0;
+}
 section.left,
 section.right {
+    display: flex;
     flex-direction: column;
     padding: 0 0 15vh;
-    align-items: end;
+    align-items: center;
     justify-content: end;
+    width: 50%;
 }
 section.left {
     justify-content: end;
@@ -83,7 +90,6 @@ section.left {
 }
 section.right {
     align-items: end;
-    justify-content: baseline;
 }
 
 /* bg abstract shape */
@@ -98,17 +104,21 @@ section.right {
 
 /* left section layout */
 section.left main {
+    display: flex;
+    flex-direction: column;
     width: 80%;
 }
 section.left main header {
     padding-bottom: 2em;
+    word-break: keep-all;
 }
-section.left main header h1 {
+.page-title {
     font-size: 48pt;
     text-transform: capitalize;
+    /* white-space: nowrap; */
 }
-section.left main header small::first-letter {
-    text-transform: capitalize;
+section.left main header small {
+    white-space: nowrap;
 }
 
 /* form */
@@ -138,6 +148,12 @@ section.left main header small::first-letter {
 }
 .form-submit input[type="submit"] {
     padding: .5em 2.5em;
+    transition: all 250ms ease-in-out;
+}
+.form-submit input[type="submit"]:hover {
+    letter-spacing: .25em;
+    padding: .5em 5em;
+    background-color: var(--success);
 }
 .input-group > input,
 .input-group > textarea {
@@ -163,10 +179,12 @@ section.left main header small::first-letter {
 }
 /* set position to placeholder */
 .input-group label:has(~ textarea) {
-    transform: translate(1em, calc(8em - 5px));
+    transform: translate(0.5em, calc(8em - 5px));
+    letter-spacing: .2em;
 } 
 .input-group label:has(~ input) {
-    transform: translate(1em, calc(2em - 1px));
+    transform: translate(0.5em, calc(2em - 1px));
+    letter-spacing: .2em;
 }
 /* switch back to default position */
 .input-group label:has(~ textarea:focus),
@@ -174,6 +192,8 @@ section.left main header small::first-letter {
 .input-group label:has(~ input:focus),
 .input-group label:has(~ input:not(:placeholder-shown)) {
     transform: translate(0, 0);
+    letter-spacing: 0;
+    opacity: .5;
 }
 
 /* make label click through */
@@ -226,6 +246,10 @@ aside::before {
     left: 0;
     transform: translate(-50%, -50%);
 }
+.contact-detail p i {
+    padding: 0 1em 0 0;
+    height: auto;
+}
 
 /* custom alert for js pop up */
 #customAlert.show {
@@ -233,7 +257,7 @@ aside::before {
 }
 #customAlert {
     display: none;
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     align-items: center;
@@ -241,6 +265,7 @@ aside::before {
     left: 0;
     top: 0;
     background-color: rgba(0, 0, 0, .25);
+    backdrop-filter: blur(5px);
 }
 #customAlert.show > .alertBox {
     display: flex;
@@ -252,10 +277,11 @@ aside::before {
     width: 40vw;
     height: 50vh;
     border-radius: 3em;
-    background-color: antiquewhite;
+    background-color: var(--dark-bg);
 }
 #customAlert.show .alertText {
     font-size: 2.5rem;
+    color: var(--light-bg);
 }
 #customAlert .done,
 #customAlert .loading {
@@ -266,15 +292,13 @@ aside::before {
 }
 #customAlert .done {
     bottom: 4em;
+    width: 128px;
 }
 #customAlert.alertLoad .done {
     display: none;
 }
 #customAlert.alertDone .loading {
     display: none;
-}
-#customAlert .done {
-    width: 128px;
 }
 .done > img {
     width: 100%;
